@@ -1,7 +1,8 @@
 import React from 'react';
+import PageDefault from '../../../componentes/PageDefault';
 
 export default props => (
-    <div>
+    <PageDefault>
         Cadastro de vídeos
-    </div>
+    </PageDefault>
 )
