@@ -8,23 +8,27 @@ function App() {
   return (
     <div>
       <Menu />
-      {dadosIniciais.categorias.map((categoria, categoriaIndex) => 
-      (
-        <>
-        {categoria.videos.map((video, videoIndex) => (
           <BannerMain 
-          videoTitle={video.titulo}
-          url={video.url}
+          videoTitle={dadosIniciais.categorias[0].video[0].titulo}
+          url={dadosIniciais.categorias[0].video[0].url}
           />
-        ))}
 
         <Carousel 
         ignoreFirstVideo
-        category={categoria}
+        category={dadosIniciais.categorias[0]}
         />
-      </>
-      )
-      )}
+        <Carousel 
+        ignoreFirstVideo
+        category={dadosIniciais.categorias[1]}
+        />
+        <Carousel 
+        ignoreFirstVideo
+        category={dadosIniciais.categorias[2]}
+        />
+        <Carousel 
+        ignoreFirstVideo
+        category={dadosIniciais.categorias[3]}
+        />
     </div>
   );
 }
