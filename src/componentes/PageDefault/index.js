@@ -5,6 +5,7 @@ import Footer from '../Footer';
 export default props => (
     <div>
         <Menu />
+        {props.children}
         <Footer />
     </div>
 )
