@@ -3,6 +3,7 @@ import Menu from './componentes/Menu';
 import BannerMain from './componentes/BannerMain';
 import Carousel from './componentes/Carousel';
 import dadosIniciais from './data/dados_iniciais.json';
+import Footer from './componentes/Footer';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         ignoreFirstVideo
         category={dadosIniciais.categorias[3]}
         />
+        <Footer />
     </div>
   );
 }
