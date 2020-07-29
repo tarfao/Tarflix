@@ -2,7 +2,8 @@ import React from 'react';
 import PageDefault from '../../../componentes/PageDefault';
 import { Link } from 'react-router-dom';
 
-export default props => (
+function CadastroVideo(){
+    return  (
     <PageDefault>
         <h1>Cadastro de vídeos</h1>
 
@@ -10,4 +11,7 @@ export default props => (
             Nova categoria
         </Link>
     </PageDefault>
-)
+    )
+}
+
+export default CadastroVideo;
