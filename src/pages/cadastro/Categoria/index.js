@@ -21,10 +21,14 @@ function CadastroCategoria() {
     });
   }
 
-  function handleChange(infosDoEvento) {
+  /**The best handleChange, que ajuda economizar varios onChanges para cada novo
+   * atributo, recuperando o seu valor, e o nome daquele input que deseja obter o seu value. 
+   * AJUDA DEMAIS
+  */
+  function handleChange(e) {
     setValue(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value,
+      e.target.getAttribute('name'),
+      e.target.value,
     );
   }
 

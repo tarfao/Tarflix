@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; //ajuda validar as props recebidas, como required ou não
 import styled, { css } from 'styled-components';
 
 const FormFieldWrapper = styled.div`
@@ -58,6 +58,7 @@ const Input = styled.input`
   &:focus:not([type='color']) + ${Label.Text} {
     transform: scale(.6) translateY(-10px);
   }
+  {/**quando ha um valor dentro do input, ele deixa o span acima, para nao sobrepor o conteudo */}
   ${({ value }) => {
     const hasValue = value.length > 0;
     return hasValue && css`
