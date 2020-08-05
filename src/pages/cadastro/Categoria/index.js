@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../componentes/PageDefault';
 import FormField from '../../../componentes/FormField';
 import Button from '../../../componentes/Button';
+import useForm from '../../../componentes/hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -11,27 +12,7 @@ function CadastroCategoria() {
     cor: '',
   };
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
-
-  function setValue(chave, valor) {
-    // chave: nome, descricao, bla, bli
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor'
-    });
-  }
-
-  /**The best handleChange, que ajuda economizar varios onChanges para cada novo
-   * atributo, recuperando o seu valor, e o nome daquele input que deseja obter o seu value. 
-   * AJUDA DEMAIS
-  */
-  function handleChange(e) {
-    setValue(
-      e.target.getAttribute('name'),
-      e.target.value,
-    );
-  }
-
+  const { handleChange, values, clearValues } = useForm(valoresIniciais);
   // ============
 
   useEffect(() => {
@@ -64,7 +45,7 @@ function CadastroCategoria() {
           values,
         ]);
 
-        setValues(valoresIniciais);
+        clearValues(valoresIniciais);
       }}
       >
 
