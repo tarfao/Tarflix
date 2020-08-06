@@ -4,6 +4,7 @@ import PageDefault from '../../../componentes/PageDefault';
 import FormField from '../../../componentes/FormField';
 import Button from '../../../componentes/Button';
 import useForm from '../../../componentes/hooks/useForm';
+import categoriesRepository from '../../../repositories/categoria';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -16,18 +17,14 @@ function CadastroCategoria() {
   // ============
 
   useEffect(() => {
-    const URL = window.location.href.includes('localhost')
-      ? 'http://localhost:8080/categorias'
-      : 'https://tarflix.herokuapp.com/categorias';
-    fetch(URL)
-      .then(async (respostaDoServer) => {
-        if (respostaDoServer.ok) {
-          const resposta = await respostaDoServer.json();
-          setCategorias(resposta);
-          return;
-        }
-        throw new Error('Não foi possível pegar os dados');
-      });
+    categoriesRepository.getAllCategoryWithVideos()
+    .then(resp => {
+      setCategorias(resp);
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+    
   }, []);
 
   return (
