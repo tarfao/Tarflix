@@ -9,9 +9,9 @@ import categoriasRepositories from '../../../repositories/categoria'
 
 function CadastroVideo(){
     const { handleChange, values } = useForm({ 
-        titulo: 'Título padrão',
-        url: 'https://www.youtube.com/watch?v=hhQ3RtvmfEg',
-        categoria: 'Front End'
+        titulo: '',
+        url: '',
+        categoria: ''
     });
     const history = useHistory();
     const [categorias, setCategorias] = useState([]);
