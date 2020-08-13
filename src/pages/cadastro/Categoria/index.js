@@ -9,8 +9,9 @@ import categoriesRepository from '../../../repositories/categoria';
 function CadastroCategoria() {
   const valoresIniciais = {
     nome: '',
-    descricao: '',
     cor: '',
+    text: '',
+    url: ''
   };
   const [categorias, setCategorias] = useState([]);
   const { handleChange, values, clearValues } = useForm(valoresIniciais);
@@ -18,31 +19,35 @@ function CadastroCategoria() {
 
   useEffect(() => {
     categoriesRepository.getAllCategoryWithVideos()
-    .then(resp => {
-      setCategorias(resp);
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-    
+      .then(resp => {
+        setCategorias(resp);
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+
   }, []);
 
   return (
     <PageDefault>
       <h1>
         Cadastro de Categoria:
-        {values.nome}
       </h1>
 
       <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
 
-        setCategorias([
-          ...categorias,
-          values,
-        ]);
+        categoriesRepository.create(values);
 
         clearValues(valoresIniciais);
+
+        categoriesRepository.getAllCategoryWithVideos()
+          .then(resp => {
+            setCategorias(resp);
+          })
+          .catch(err => {
+            console.log(err.message)
+          })
       }}
       >
 
@@ -55,10 +60,18 @@ function CadastroCategoria() {
         />
 
         <FormField
-          label="Descrição:"
-          type="textarea"
-          name="descricao"
-          value={values.descricao}
+          label="Texto extra:"
+          type="text"
+          name="text"
+          value={values.text}
+          onChange={handleChange}
+        />
+
+        <FormField
+          label="Url para vídeo extra:"
+          type="text"
+          name="url"
+          value={values.url}
           onChange={handleChange}
         />
 
