@@ -37,6 +37,10 @@ function CadastroCategoria() {
       <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
 
+        if (!values.nome) {
+          alert("Ops! O nome da categoria é obrigatório!");
+          return;
+        }
         categoriesRepository.create(values);
 
         clearValues(valoresIniciais);
